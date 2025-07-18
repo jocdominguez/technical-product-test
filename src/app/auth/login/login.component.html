@@ -1,0 +1,22 @@
+<div class="form-container">
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>Login</h2>
+    <div class="form-row">
+      <mat-form-field>
+        <mat-label>User</mat-label>
+        <input id="user" type="text" formControlName="user" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input id="password" type="password" formControlName="password" matInput>
+      </mat-form-field>
+    </div>
+
+    <button [disabled]="!profileForm.valid" matButton>Submit</button>
+ 
+</form>
+
+</div>

@@ -1,0 +1,26 @@
+
+<div class="users-header">
+  <h1>Products</h1>
+  <button (click)="openDialog()" mat-raised-button color="primary">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>Add User
+  </button>
+</div>
+
+@for(item of data(); track item.id){
+<div class="users-container">
+  <div class="users-box">
+    <div class="text">{{ item.name }}</div>
+    <div class="label">{{ 'Name' | lowercase }}</div>
+  </div>
+
+  <div class="users-box">
+    <div class="text">{{ item.category }}</div>
+    <div class="label">{{ 'Category' | lowercase }}</div>
+  </div>
+
+  <div class="users-box">
+    <div class="text">{{ item.price | currency }}</div>
+    <div class="label">{{ 'Price' | lowercase }}</div>
+  </div>
+</div>
+}
