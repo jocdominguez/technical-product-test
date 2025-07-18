@@ -47,14 +47,19 @@ export class ProductCreateComponent {
   onSave() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid) {
       const productData = {
+        id: Date.now(),
         ...this.firstFormGroup.value,
         ...this.secondFormGroup.value
       };
       console.log('Product Data:', productData);
+      this.store.dispatch(loadProductsSuccess({ products: [productData] }));
       this._snackBar.open('Product has been created', 'Close', {
         duration: 2000,
       });
-      this.router.navigate(['/products']);
+      this.router.navigate([`/products`],{
+        queryParams: { reload: true }
+      });
+     
     } else {
       console.error('Form is invalid');
     }

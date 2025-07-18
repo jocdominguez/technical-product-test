@@ -27,18 +27,28 @@ export const loadProductsFailure = createAction(
   props<{ error: any }>()
 );
 
+export const deleteProduct = createAction(
+  '[Products] Delete product',
+  props<{ product: any }>()
+);
+
 // Create the reducer
 export const productReducer = createReducer(
   initialProductState,
   on(loadProductsSuccess, (state: ProductState, { products }) => ({
     ...state,
     loading: true,
-    products,
+    products: state.products.concat(products) 
   })),
   on(loadProducts, (state: ProductState) => ({
     ...state,
     loading: false,
     products: [],
+  })),
+  on(deleteProduct, (state: ProductState, { product }) => ({
+    ...state,
+    loading: true,
+    products: state.products.filter((p: any) => p.id !== product.id),
   }))
 );
 

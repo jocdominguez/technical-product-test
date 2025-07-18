@@ -22,5 +22,9 @@
     <div class="text">{{ item.price | currency }}</div>
     <div class="label">{{ 'Price' | lowercase }}</div>
   </div>
+
+  <div class="users-box">
+    <button (click)="deleteItem(item)" mat-raised-button color="primary">Delete</button>
+  </div>
 </div>
 }
